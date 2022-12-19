@@ -1,0 +1,77 @@
+<div class="container-fluid mt-2">
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="10000">
+            <img src="https://cdn.pixabay.com/photo/2013/07/19/00/18/splashing-165192__340.jpg" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img src="https://media.istockphoto.com/photos/water-splash-picture-id175018345?b=1&k=20&m=175018345&s=612x612&w=0&h=4aIyCPV4wR4bY_QzhpjYDkLnm3S5uLoPq447Yk_qEaE=" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="https://cdn.pixabay.com/photo/2013/07/19/00/18/splashing-165192__340.jpg" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <div class="cards mt-2S">
+        <div *ngFor="let item of data" class="card bg-dark mt-2" style="width: 18rem;" >
+            <img (click)="gotoDetails(item,item.id)" src={{item.image}} class="card-img-top" alt="...">
+            <div class="card-body text-center">
+              <h6 class="card-title text-center text-light">{{item.title}}</h6>
+              <p class="card-title text-center text-light">{{item.price}}</p>
+              <button class="btn btn-outline-light" (click)="addtoCart(item)">Add To Cart</button>
+            </div>
+          </div>
+      </div>
+<!-- Button trigger modal -->
+<button  type="button" id="modelopen" class="btn btn-primary  d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
+          <button type="button" id="closebtn" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form name="form" (ngSubmit)="f.form.valid && login(f)" #f="ngForm">
+            <div class="form-group col">
+                <label>Email</label>
+                <input type="text" name="email" class="form-control" [(ngModel)]="model.email" #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required email>
+                <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                    <div *ngIf="email.errors?.['required']">Email is required</div>
+                    <div *ngIf="email.errors?.['email']">Email must be a valid email address</div>
+                </div>
+            </div>
+            <div class="form-group col">
+              <label>Password</label>
+              <input type="password" name="password" class="form-control" [(ngModel)]="model.password" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required minlength="6">
+              <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
+                  <div *ngIf="password.errors?.['required']">Password is required</div>
+                  <div *ngIf="password.errors?.['minlength']">Password must be at least 6 characters</div>
+              </div>
+          </div>
+        <div class="text-center mt-3">
+            <button class="btn btn-primary me-1">Login</button>
+            <button class="btn btn-secondary" type="reset">Cancel</button>
+        </div>
+    </form>
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>

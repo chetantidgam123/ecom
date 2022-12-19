@@ -1,0 +1,43 @@
+<div class="mt-2">
+    <!-- <form #form="ngForm" name="form" (ngSubmit)="login(form)" action="" class="formFeild">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+            <input name="email" #email="ngModel"  [(ngModel)]="email1" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"  required>
+            <div *ngIf="form.submitted && email.invalid" class="invalid-feedback">
+              <div *ngIf="email.errors?.['required']">Email is required</div>
+          </div>
+          </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput" class="form-label">Password</label>
+            <input type="text" name="pass" #pass1="ngModel" [(ngModel)]="pass" class="form-control" id="exampleFormControlInput" placeholder="Enter Password" required >
+            <div *ngIf="form.submitted && pass1.invalid" class="invalid-feedback">
+              <div *ngIf="pass1.errors?.['required']">Password is required</div>
+          </div>
+          </div>
+          <div class="text-center">
+            <button type="submit"  class="btn btn-light">Submit</button>
+          </div>
+    </form> -->
+    <form name="form" (ngSubmit)="f.form.valid && login(f)" #f="ngForm">
+          <div class="form-group col">
+              <label>Email</label>
+              <input type="text" name="email" class="form-control" [(ngModel)]="model.email" #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required email>
+              <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                  <div *ngIf="email.errors?.['required']">Email is required</div>
+                  <div *ngIf="email.errors?.['email']">Email must be a valid email address</div>
+              </div>
+          </div>
+          <div class="form-group col">
+            <label>Password</label>
+            <input type="password" name="password" class="form-control" [(ngModel)]="model.password" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required minlength="6">
+            <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
+                <div *ngIf="password.errors?.['required']">Password is required</div>
+                <div *ngIf="password.errors?.['minlength']">Password must be at least 6 characters</div>
+            </div>
+        </div>
+      <div class="text-center mt-3">
+          <button class="btn btn-primary me-1">Login</button>
+          <button class="btn btn-secondary" type="reset">Cancel</button>
+      </div>
+  </form>
+</div>

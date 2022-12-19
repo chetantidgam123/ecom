@@ -1,0 +1,18 @@
+<div class="productDetails mt-2 container-fluid">
+<div class="row">
+    <div class="imgProd col-3">
+        <img src="{{img}}" alt="" srcset="">
+    </div>
+    <div class="details  mx-2 col-4">
+        <ul>
+            <li><p><b>Name:</b> {{name}}</p></li>
+            <li><p><b>Category:</b> {{cat}}</p></li>
+            <li><p><b>Discription:</b> {{description}}</p></li>
+            <li><p><b>Cost:</b> {{price}}</p></li>
+        </ul>
+        <div>
+            <button  class="btn btn-primary" (click)="addtoCart()">Add To Cart</button>
+        </div>
+    </div>
+</div>
+</div>

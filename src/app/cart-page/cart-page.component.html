@@ -1,0 +1,60 @@
+<div class="mt row">
+    <div class="cartItem col-4">
+        <h2 class="text-center">Cart Item</h2>
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">Sr No</th>
+                <th scope="col">Product</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Remove</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of list;let i = index">
+                <th scope="row">{{i+1}}</th>
+                <td><img class="prodimg" src={{item.image}}></td>
+                <td>{{item.title}}</td>
+                <td>{{item.price}}</td>
+                <td class="text-center"><i class="fa fa-trash text-danger pointer" (click)="removeItem(i)"></i></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="d-flex justify-content-end">
+            <p class="pe-3"><b class="me-3">Total Price</b> {{total}}</p>
+          </div>
+    </div>
+    <div class="checkOut offset-2 col-6">
+        <h2 class="text-center">CheckOut</h2>
+        <div class="mt-2">
+            <form action="" class="formFeild">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Name</label>
+                    <input type="email" class="form-control" name="email" [(ngModel)]="email" id="exampleFormControlInput1" placeholder="Name">
+                  </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput" class="form-label">Address</label>
+                    <textarea type="email" class="form-control" name="add" [(ngModel)]="add" id="exampleFormControlInput" placeholder="Enter Address"></textarea>
+                  </div>
+                  <h4>Payment Mode</h4>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>
+                    <label class="form-check-label" for="inlineRadio1">COD</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                    <label class="form-check-label" for="inlineRadio2">CARD</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                    <label class="form-check-label" for="inlineRadio3">UPI</label>
+                  </div>
+                  <div class="text-center">
+                    <button class="btn btn-light" [disabled]="email=='' || add==''" (click)="checkout()">Submit</button>
+                  </div>
+            </form>
+        </div>
+        
+    </div>
+</div>
